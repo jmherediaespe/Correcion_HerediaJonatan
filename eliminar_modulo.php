@@ -41,7 +41,7 @@ if(empty($_REQUEST['id'])){
 <head>
 	<meta charset="UTF-8">
 	<?php include "includes/scripts.php" ?>
-	<title>Eliminar Usuario</title>
+	<title>Eliminar Modulo</title>
 </head>
 <body>
 	<?php include "includes/header.php"?>

@@ -49,6 +49,11 @@
                     $alert='';
                         //RECOLECTA LOS DATOS DEL FORMULARIO
                         $codmodulo = $_POST['modulo'];
+                        $querym = mysqli_query($connection, "SELECT NOMBRE
+                        FROM seg_modulo 
+                        WHERE COD_MODULO='$codmodulo'");
+                        $data = mysqli_fetch_array($querym);
+                        $nombre_modulo = $data["NOMBRE"];                       
         ?>
                  <table>
             <tr>
@@ -74,7 +79,7 @@
             ?>
                         <tr>
                             <td><?php echo $data["COD_FUNCIONALIDAD"] ?></td>
-                            <td><?php echo $data["NOMBRE"] ?></td>
+                            <td><?php echo $nombre_modulo ?></td>
                             <td><?php echo $data["URL_PRINCIPAL"] ?></td>
                             <td><?php echo $data["NOMBRE"] ?></td>
                             <td><?php echo $data["DESCRIPCION"] ?></td>
