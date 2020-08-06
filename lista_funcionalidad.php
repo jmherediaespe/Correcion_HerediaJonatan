@@ -1,4 +1,5 @@
 <?php
+    $codmodulo='';
     $nombre_modulo='';
 	include "conexion.php";
 	if(!empty($_POST))
@@ -7,7 +8,7 @@
             //RECOLECTA LOS DATOS DEL FORMULARIO
             $codmodulo = $_POST['modulo'];
 			
-		
+
 	}
 ?>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 <body>
 	<?php include "includes/header.php"?>
 	<section id="container">
-
+        <div class="form_register">
         <h1>Lista de Funcionalidades</h1>
         <a href="registro_funcionalidad.php" class="btn_new">Crear funcionalidad</a>
         <form action="" method="post">
@@ -29,8 +30,18 @@
 					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo WHERE ESTADO='ACT'");
 					$result_mod=mysqli_num_rows($query_mod);
 				?>
-				<select name="modulo" id="modulo">
+				<select name="modulo" id="modulo" class="notItemOne">
 					<?php
+                        if(isset($codmodulo))
+                        {
+                            $querynommod = mysqli_query($connection, "SELECT NOMBRE
+                            FROM seg_modulo 
+                            WHERE COD_MODULO='$codmodulo'");
+                            $data1 = mysqli_fetch_array($querynommod);
+                            $nombre_modulo = $data1["NOMBRE"]; 
+                            $option2 = '<option value="'.$codmodulo.'"select>'.$nombre_modulo.'</options>';
+                            echo $option2;
+                        }
 						//LISTA LOS modulos DESDE LA DB
 						if($result_mod>0){
 
@@ -44,6 +55,7 @@
 				</select>
 				<input type="submit" value="Aceptar" class="btn_save">
         </form>
+        </div>
         <?php
             	if(!empty($_POST))
                 {
@@ -56,6 +68,9 @@
                         $data = mysqli_fetch_array($querym);
                         $nombre_modulo = $data["NOMBRE"];                       
         ?>
+        <br>
+        <h2 style="text-align:center">Funcionalidades del Modulo <?php echo $nombre_modulo ?> </h2>
+        <br>
                  <table>
             <tr>
                 <th>Codigo</th>
@@ -99,8 +114,9 @@
         <?php           
                 }
         ?>
-
 	</section>
+        
+        
 	<?php include "includes/footer.php"?>
 
 </body>

@@ -34,7 +34,10 @@
     }
 
     $codfuncionalidad=$_GET['id'];   
-    $sql= mysqli_query($connection,"SELECT * FROM seg_funcionalidad WHERE COD_FUNCIONALIDAD='$codfuncionalidad'");
+    $sql= mysqli_query($connection,"SELECT COD_FUNCIONALIDAD, sf.COD_MODULO, URL_PRINCIPAL, (sf.NOMBRE) as nombre_funcionalidad, (sm.NOMBRE) as nombre_modulo , DESCRIPCION 
+	FROM seg_funcionalidad sf 
+	INNER JOIN seg_modulo sm on sf.COD_MODULO=sm.COD_MODULO
+	WHERE COD_FUNCIONALIDAD='$codfuncionalidad'");
 
     $result_sql = mysqli_num_rows($sql);
     if($result_sql==0)
@@ -46,8 +49,11 @@
 			$codfuncionalidad = $data['COD_FUNCIONALIDAD'];
 			$codmodulo = $data['COD_MODULO'];
 			$url = $data['URL_PRINCIPAL'];
-			$nombre = $data['NOMBRE'];
+			$nombrefuncionalidad = $data['nombre_funcionalidad'];
+			$nombremodulo = $data['nombre_modulo'];
             $descripcion = $data['DESCRIPCION'];
+			
+			$option = '<option value="'.$codmodulo.'"select>'.$nombremodulo.'</options>';
 
         }
     }
@@ -75,8 +81,9 @@
 					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo WHERE ESTADO='ACT'");
 					$result_mod=mysqli_num_rows($query_mod);
 				?>
-				<select name="modulo" id="modulo">
+				<select name="modulo" id="modulo" class="notItemOne">
 					<?php
+					echo $option;
 						//LISTA LOS modulos DESDE LA DB
 						if($result_mod>0){
 
@@ -91,7 +98,7 @@
 				<label for="URL">URL</label>
 				<input type="text" name="URL" id="URL" placeholder="URL" value="<?php echo $url;?>">
 				<label for="nombre">Nombre</label>
-				<input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $nombre;?>">
+				<input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $nombrefuncionalidad;?>">
 				<label for="descripcion">Descripción</label>
 				<input type="text" name="descripcion" id="descripcion" placeholder="Descripción" value="<?php echo $descripcion;?>">
 				<input type="submit" value="Actualizar funcionalidad" class="btn_save">
