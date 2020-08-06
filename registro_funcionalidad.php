@@ -12,7 +12,7 @@
             $modulo = $_POST['modulo'];
 			$nombre = $_POST['nombre'];
 			$url = $_POST['URL'];
-			$descripcion = $_POST['URL'];
+			$descripcion = $_POST['descripcion'];
 
 			$query_insert = mysqli_query($connection, "INSERT INTO seg_funcionalidad(COD_MODULO,URL_PRINCIPAL,NOMBRE,DESCRIPCION) 
 			values('$modulo','$url','$nombre','$descripcion')");
@@ -48,7 +48,7 @@
 				<label for="modulo">Modulo</label>
 				<?php
 				//OBTIENE LOS MODULOS DESDE LA DB
-					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo");
+					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo WHERE ESTADO='ACT'");
 					$result_mod=mysqli_num_rows($query_mod);
 				?>
 				<select name="modulo" id="modulo">

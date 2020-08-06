@@ -48,7 +48,10 @@
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre">
 				<label for="estado">Estado</label>
-				<input type="text" name="estado" id="estado" placeholder="Estado">
+				<select name="estado" id="estado">
+					<option value="ACT" >ACTIVO</option>
+					<option value="INA" >INACTIVO</option>
+				</select>
 				<input type="submit" value="Crear modulo" class="btn_save">
 			</form>
 		</div>

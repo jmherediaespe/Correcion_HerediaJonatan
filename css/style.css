@@ -43,7 +43,7 @@ a{
 	letter-spacing: 1px;
 }
 span {
-    font-family: 'GothamBook';
+    font-family: 'Arial, Helvetica, sans-serif';
     letter-spacing: 1px;
     font-size: 14px;
     line-height: 20px;
@@ -77,7 +77,7 @@ header{
 .optionsBar span {
     color: #FFF;
     font-size: 11pt;
-    font-family: 'GothamBook';
+    font-family: 'Arial, Helvetica, sans-serif';
     text-transform: uppercase;
     margin-left: 30px;
 }
@@ -99,7 +99,7 @@ header{
     margin-left: 30px;
 }
 nav ul{
-	background: #058167;
+	background: #0a4661;
 	/*background: #05817d;*/
 	list-style: none;
 	display: -webkit-flex;
@@ -117,7 +117,7 @@ nav a{
 	color: #FFF;
 	display: block;
 	font-size: 10pt;
-	font-family: 'GothamBook';
+	font-family: 'Arial, Helvetica, sans-serif';
 	padding: 15px 30px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -137,7 +137,7 @@ nav ul li:hover ul{
 }
 nav li ul{
 	/*background: #177470;*/
-	background: #2d9872;
+	background: #0a4661;
 	display: none;
 	flex-direction: column;
 	position: absolute;
@@ -151,7 +151,7 @@ nav li ul a{
 }
 nav li ul a:hover{
 	/*background: #2c9595;*/
-	background: #147556;
+	background: #0a4661;
 }
 nav li ul li:last-child{
 	border-radius: 0 0 10px 10px;

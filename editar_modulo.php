@@ -70,7 +70,10 @@
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $nombre; ?>">
 				<label for="estado">Estado</label>
-				<input type="text" name="estado" id="estado" placeholder="Estado" value="<?php echo $estado; ?>">
+				<select name="estado" id="estado">
+					<option value="ACT" >ACTIVO</option>
+					<option value="INA" >INACTIVO</option>
+				</select>				
 				<input type="submit" value="Actualizar modulo" class="btn_save">
 			</form>
 		</div>

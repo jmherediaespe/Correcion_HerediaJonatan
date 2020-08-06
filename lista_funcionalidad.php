@@ -25,7 +25,7 @@
         <form action="" method="post">
         <?php
 				//OBTIENE LOS MODULOS DESDE LA DB
-					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo");
+					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo WHERE ESTADO='ACT'");
 					$result_mod=mysqli_num_rows($query_mod);
 				?>
 				<select name="modulo" id="modulo">
