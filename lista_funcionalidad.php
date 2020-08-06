@@ -1,4 +1,5 @@
 <?php
+    $nombre_modulo='';
 	include "conexion.php";
 	if(!empty($_POST))
 	{
@@ -35,7 +36,7 @@
 
 							while($mod= mysqli_fetch_array($query_mod)){
 					?>
-								<option value="<?php echo $mod["COD_MODULO"]; ?>"><?php echo $mod["NOMBRE"] ?></option>
+								<option  value="<?php echo $mod["COD_MODULO"]; ?>"><?php echo $mod["NOMBRE"] ?></option>
 					<?php
 							}
 						}

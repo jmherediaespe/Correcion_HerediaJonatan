@@ -25,17 +25,18 @@
         <form action="" method="post">
         <?php
 				//OBTIENE LOS roles DESDE LA DB
-					$query_rol=mysqli_query($connection, "SELECT * FROM ROL_MODULO");
+					$query_rol=mysqli_query($connection, "SELECT DISTINCT rm.COD_ROL, NOMBRE FROM rol_modulo rm INNER JOIN seg_rol sr ON sr.COD_ROL=rm.COD_ROL");
 					$result_rol=mysqli_num_rows($query_rol);
 				?>
 				<select name="rol" id="rol">
 					<?php
+                    
 						//LISTA LOS roles DESDE LA DB
 						if($result_rol>0){
 
 							while($rol= mysqli_fetch_array($query_rol)){
 					?>
-								<option value="<?php echo $rol["COD_ROL"]; ?>"><?php echo $rol["COD_ROL"] ?></option>
+								<option value="<?php echo $rol["COD_ROL"]; ?>"><?php echo $rol["NOMBRE"] ?></option>
 					<?php
 							}
 						}
@@ -56,7 +57,9 @@
             </tr>
             <?php
                 //QUERY PARA LISTAR MODULOS
-                $query = mysqli_query($connection, "SELECT * FROM ROL_MODULO WHERE COD_ROL='$codrol'");
+                $query = mysqli_query($connection, "SELECT NOMBRE, rol_modulo.COD_ROL, seg_modulo.COD_MODULO FROM rol_modulo 
+                INNER join seg_modulo on seg_modulo.COD_MODULO=rol_modulo.COD_MODULO 
+                WHERE COD_ROL='$codrol'");
 
                 $result=mysqli_num_rows($query);
 
@@ -67,11 +70,11 @@
                         //$data es un array que tiene datos del query
             ?>
                         <tr>
-                            <td><?php echo $data["COD_MODULO"] ?></td>
+                            <td><?php echo $data["NOMBRE"] ?></td>
                             <td>
-                                <a class="link_edit" href="editar_rol.php?id=<?php echo $data["COD_ROL"] ?>">Editar</a>
+                                <a class="link_edit" href="editar_rol.php?id=<?php echo $data["COD_ROL"]?>&idm=<?php echo $data["COD_MODULO"]?>">Editar</a>
                                 |
-                                <a class="link_delete" href="eliminar_rol.php?id=<?php echo $data["COD_ROL"] ?>">Eliminar</a>
+                                <a class="link_delete" href="eliminar_rol.php?id=<?php echo $data["COD_ROL"]?>&idm=<?php echo $data["COD_MODULO"]?>">Eliminar</a>
                             </td>
                         </tr>
             <?php

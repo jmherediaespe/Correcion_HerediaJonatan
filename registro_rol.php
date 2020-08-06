@@ -42,12 +42,29 @@
 			<div class="alert"><?php echo isset($alert) ? $alert:''; ?></div>
 
 			<form action="" method="post">
-                <label for="rol">Rol</label>
-				<input type="text" name="rol" id="rol" placeholder="Rol">
+				<label for="rol">Rol</label>
+				<?php
+				//OBTIENE LOS MODULOS DESDE LA DB
+					$query_mod=mysqli_query($connection, "SELECT * FROM seg_rol");
+					$result_mod=mysqli_num_rows($query_mod);
+				?>
+				<select name="rol" id="rol">
+					<?php
+						//LISTA LOS modulos DESDE LA DB
+						if($result_mod>0){
+
+							while($mod= mysqli_fetch_array($query_mod)){
+					?>
+								<option value="<?php echo $mod["COD_ROL"]; ?>"><?php echo $mod["NOMBRE"] ?></option>
+					<?php
+							}
+						}
+					?>
+				</select>
 				<label for="modulo">Modulo</label>
 				<?php
 				//OBTIENE LOS MODULOS DESDE LA DB
-					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo");
+					$query_mod=mysqli_query($connection, "SELECT * FROM seg_modulo WHERE ESTADO='ACT'");
 					$result_mod=mysqli_num_rows($query_mod);
 				?>
 				<select name="modulo" id="modulo">
