@@ -81,7 +81,7 @@
                 //QUERY PARA LISTAR MODULOS
                 $query = mysqli_query($connection, "SELECT NOMBRE, rol_modulo.COD_ROL, seg_modulo.COD_MODULO FROM rol_modulo 
                 INNER join seg_modulo on seg_modulo.COD_MODULO=rol_modulo.COD_MODULO 
-                WHERE COD_ROL='$codrol'");
+                WHERE COD_ROL='$codrol' AND seg_modulo.ESTADO='ACT'");
 
                 $result=mysqli_num_rows($query);
 

@@ -15,7 +15,7 @@
 
         <h1>Lista de Modulos</h1>
         <a href="registro_modulo.php" class="btn_new">Crear módulo</a>
-        <table>
+        <table style="text-align:center">
             <tr>
                 <th>Código</th>
                 <th>Nombre</th>

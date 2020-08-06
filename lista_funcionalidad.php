@@ -71,7 +71,7 @@
         <br>
         <h2 style="text-align:center">Funcionalidades del Modulo <?php echo $nombre_modulo ?> </h2>
         <br>
-                 <table>
+                 <table style="text-align:center">
             <tr>
                 <th>Codigo</th>
                 <th>Modulo</th>
