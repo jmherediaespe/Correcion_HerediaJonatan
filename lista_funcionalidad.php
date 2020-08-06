@@ -60,7 +60,9 @@
             </tr>
             <?php
                 //QUERY PARA LISTAR MODULOS
-                $query = mysqli_query($connection, "SELECT * FROM seg_funcionalidad WHERE COD_MODULO='$codmodulo'");
+                $query = mysqli_query($connection, "SELECT f.COD_FUNCIONALIDAD, m.NOMBRE, f.URL_PRINCIPAL, f.NOMBRE, f.DESCRIPCION 
+                FROM seg_funcionalidad f INNER JOIN seg_modulo m ON f.COD_MODULO=m.COD_MODULO 
+                WHERE m.COD_MODULO='$codmodulo'");
 
                 $result=mysqli_num_rows($query);
 
@@ -72,7 +74,7 @@
             ?>
                         <tr>
                             <td><?php echo $data["COD_FUNCIONALIDAD"] ?></td>
-                            <td><?php echo $data["COD_MODULO"] ?></td>
+                            <td><?php echo $data["NOMBRE"] ?></td>
                             <td><?php echo $data["URL_PRINCIPAL"] ?></td>
                             <td><?php echo $data["NOMBRE"] ?></td>
                             <td><?php echo $data["DESCRIPCION"] ?></td>
